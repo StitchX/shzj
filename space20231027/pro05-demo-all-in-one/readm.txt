@@ -1,0 +1,12 @@
+tomcat 10.1.8
+Maven  3.9.4
+jdk    19
+mysql  8.0.32
+connector
+junit  4.12
+jarkart 5.0.0
+
+common.dbutils
+thymeleaf
+logback-classic
+druid

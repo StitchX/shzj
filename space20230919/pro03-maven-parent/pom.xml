@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        
+  
+  
+  <modelVersion>4.0.0</modelVersion>
+        
+  
+  
+  <groupId>com.atguigu.maven</groupId>
+        
+  
+  
+  <artifactId>pro03-maven-parent</artifactId>
+        
+  
+  
+  <version>1.0-SNAPSHOT</version>
+        
+  
+  
+  <!-- 当前工程作为父工程，它要去管理子工程，所以打包方式必须是 pom -->
+        
+  
+  
+  <packaging>pom</packaging>
+        
+  
+  
+  <name>pro03-maven-parent</name>
+        
+  
+  
+  <url>http://maven.apache.org</url>
+        
+  
+  
+  <properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- 创建我们自定义的属性标签 -->
+    <!-- 标签名: 属性名 -->
+    <!-- 引用方式: ${atguigu.spring.version} -->
+    <!-- 聚合的配置 -->
+	<atguigu.spring.version>4.2.0.RELEASE</atguigu.spring.version>
+	<java.version>19</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <maven.compiler.release>${java.version}</maven.compiler.release>
+  </properties>
+        
+  
+  
+  <dependencies>
+                
+    
+    
+    <dependency>
+                        
+      
+      
+      <groupId>junit</groupId>
+                        
+      
+      
+      <artifactId>junit</artifactId>
+                        
+      
+      
+      <version>3.8.1</version>
+                        
+      
+      
+      <scope>test</scope>
+                      
+    
+    
+    </dependency>
+              
+  
+  
+  </dependencies>
+      
+  
+  <modules>
+  <!-- 聚合的配置 -->
+    <module>pro04-maven-module</module>
+    <module>pro05-maven-module</module> 
+    <module>pro06-maven-module</module>  
+  </modules>
+  
+  <!-- 使用dependencyManagement标签配置对依赖的管理 -->
+	<!-- 被管理的依赖并没有真正被引入到工程 -->
+	<!-- 在父工程中统一管理依赖信息 -->
+	<!-- 注意:即使在父工程配置了对依赖的管理，子工程需要使用具体哪一个依赖还是要明确配置。 -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${atguigu.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${atguigu.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${atguigu.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${atguigu.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${atguigu.spring.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+    
+
+</project>
